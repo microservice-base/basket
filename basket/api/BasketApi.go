@@ -7,11 +7,12 @@ import (
 	"net/http"
 )
 
-func productAPIMethod() string {
-	http.HandleFunc("/productapi", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-	})
+func productApiHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+}
 
+func productAPIMethod() string {
+	http.HandleFunc("/productapi", productApiHandler)
 	return "Hello, '/productapi'"
 }
 
