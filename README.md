@@ -11,6 +11,27 @@ go build BasketApi.go
 
 ./BasketApi
 
+## dependecny management like gradle maven 
+```bash
+brew install dep
+```
+projemizi dep ile yönetmeye nasıl başlarız
+
+projede hangi klasörde init komutu verirsen orada oluşuyor.
+```go
+dep init
+```
+toml ve lock dosyaları oluşacak
+
+bir yeni dependency eklemek
+
+https://github.com/naoina/go-stringutil
+
+http ve https olmadan yazmalısın
+```go
+dep ensure -add github.com/naoina/go-stringutil
+```
+
 ## API
 curl -X GET "http://localhost:8002/basket/list"
 
