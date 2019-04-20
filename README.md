@@ -35,6 +35,8 @@ dep ensure -add github.com/naoina/go-stringutil
 veya https://glide.sh/ kullan
 
 ## API
+```
 curl -X GET "http://localhost:8002/basket/list"
 
 curl  -X POST http://localhost:8002/basket/save -d '{"name":"test1", "surname":"test2"}' -H "Content-Type: application/json"
+```
