@@ -3,7 +3,9 @@
 https://microservice-base.github.io/
 
 ```
-$ cd basket
+$ git clone https://github.com/microservice-base/basket.git
+
+$ cd basket/basket
 
 $ go test
 
