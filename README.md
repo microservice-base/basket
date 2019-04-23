@@ -6,7 +6,8 @@ https://microservice-base.github.io/
 $ cd basket
 ```
 ```
-$ fresh (hot reload library)
+$ fresh 
+(hot reload library)
 ```
 or
 ```
