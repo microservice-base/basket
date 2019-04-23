@@ -5,7 +5,7 @@ import (
 )
 
 func TestHello(t *testing.T) {
-	given := productAPIMethod()
+	given := apiMethods()
 	expect := "Hello, '/productapi'"
 
 	if given != expect {
