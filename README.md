@@ -2,10 +2,6 @@
 
 https://microservice-base.github.io/
 
-## dependency management
-```
-https://github.com/golang/dep
-```
 
 ```
 $ git clone https://github.com/microservice-base/basket.git
@@ -23,7 +19,12 @@ $ go build BasketApi.go
 $ ./BasketApi
 ```
 
-## API
+## Dependency Management
+```
+https://github.com/golang/dep
+```
+
+## API call on terminal
 ```
 $ curl -X GET "http://localhost:8002/basket/list"
 
