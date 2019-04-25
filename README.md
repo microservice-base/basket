@@ -2,6 +2,11 @@
 
 https://microservice-base.github.io/
 
+## dependency management
+```
+https://github.com/golang/dep
+```
+
 ```
 $ git clone https://github.com/microservice-base/basket.git
 
