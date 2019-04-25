@@ -6,6 +6,8 @@ import (
 	"html"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 type myData struct {
@@ -13,11 +15,11 @@ type myData struct {
 	Surname string
 }
 
-func listHandler(w http.ResponseWriter, r *http.Request) {
+func list(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path+"-"+r.Method))
 }
 
-func saveHandler(w http.ResponseWriter, r *http.Request) {
+func save(w http.ResponseWriter, r *http.Request) {
 
 	decoder := json.NewDecoder(r.Body)
 
@@ -30,21 +32,38 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	name := data.Name
 	surname := data.Surname
 
+	fmt.Fprintf(w, r.URL.Path)
 	fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path+" -> "+r.Method+" -> "+name+" -> "+surname))
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Home Page")
+	fmt.Fprintf(w, "Welcome Home Page")
+}
+
+func notFound(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html")
+	w.WriteHeader(http.StatusNotFound)
+	fmt.Fprintf(w, r.URL.Path)
+	fmt.Fprintln(w, "")
+	fmt.Fprintf(w, " Not found page :) ")
 }
 
 func apiMethods() string {
-	http.HandleFunc("/", home)
-	http.HandleFunc("/basket/list", listHandler)
-	http.HandleFunc("/basket/save", saveHandler)
 	return "Hello, '/basket'"
 }
 
 func main() {
 	apiMethods()
-	log.Fatal(http.ListenAndServe(":8002", nil))
+
+	r := mux.NewRouter()
+
+	r.NotFoundHandler = http.HandlerFunc(notFound) // auto not found page handler func
+	r.HandleFunc("/", home)
+	r.HandleFunc("/basket/list", list)
+	r.HandleFunc("/basket/save", save)
+	log.Fatal(http.ListenAndServe(":8002", r))
+
+	// curl --request GET http://localhost:8002/basket/list
+	// curl --request GET http://localhost:8002/basket/save
+	// curl --request GET http://localhost:8002/
 }
