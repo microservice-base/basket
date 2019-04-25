@@ -9,6 +9,10 @@ $ cd basket/basket
 
 $ go test
 
+$ go run BasketApi.go
+
+or
+
 $ go build BasketApi.go 
 
 $ ./BasketApi
