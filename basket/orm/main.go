@@ -1,34 +1,34 @@
-package main
+// package main
 
-import (
-	"fmt"
-	"log"
-	"net/http"
+// import (
+// 	"fmt"
+// 	"log"
+// 	"net/http"
 
-	"github.com/gorilla/mux"
-)
+// 	"github.com/gorilla/mux"
+// )
 
-func helloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "kekekekek")
-}
+// func helloWorld(w http.ResponseWriter, r *http.Request) {
+// 	fmt.Fprintf(w, "kekekekek")
+// }
 
-func handleRequests() {
-	myRouter := mux.NewRouter().StrictSlash(true)
+// func handleRequests() {
+// 	myRouter := mux.NewRouter().StrictSlash(true)
 
-	myRouter.HandleFunc("/", helloWorld).Methods("GET")
-	myRouter.HandleFunc("/users", AllUsers).Methods("GET")
-	myRouter.HandleFunc("/new", NewUser).Methods("GET")
-	myRouter.HandleFunc("/user/{name}/{email}", NewUser).Methods("POST")
-	myRouter.HandleFunc("/user/{name}", DeleteUser).Methods("DELETE")
-	myRouter.HandleFunc("/user/{name}/{email}", UpdateUser).Methods("PUT")
-	log.Fatal(http.ListenAndServe(":8003", myRouter))
-}
+// 	myRouter.HandleFunc("/", helloWorld).Methods("GET")
+// 	myRouter.HandleFunc("/users", AllUsers).Methods("GET")
+// 	myRouter.HandleFunc("/new", NewUser).Methods("GET")
+// 	myRouter.HandleFunc("/user/{name}/{email}", NewUser).Methods("POST")
+// 	myRouter.HandleFunc("/user/{name}", DeleteUser).Methods("DELETE")
+// 	myRouter.HandleFunc("/user/{name}/{email}", UpdateUser).Methods("PUT")
+// 	log.Fatal(http.ListenAndServe(":8003", myRouter))
+// }
 
-func main() {
-	fmt.Println("Go orm tutuaoril")
+// func main() {
+// 	fmt.Println("Go orm tutuaoril")
 
-	InitialMigration()
+// 	InitialMigration()
 
-	handleRequests()
+// 	handleRequests()
 
-}
+// }
