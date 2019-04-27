@@ -6,17 +6,19 @@ https://microservice-base.github.io/
 ```
 $ git clone https://github.com/microservice-base/basket.git
 
+$ dep ensure
+
 $ cd basket/basket
 
 $ go test
 
-$ go run BasketApi.go
+$ go run basketApplication.go
 
 or
 
-$ go build BasketApi.go 
+$ go build basketApplication.go 
 
-$ ./BasketApi
+$ ./basketApplication
 ```
 
 ## Dependency Management
