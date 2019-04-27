@@ -19,7 +19,8 @@ func handleRequests() {
 
 	myCustomRouter.HandleFunc("/", applicationInit).Methods("GET")
 	myCustomRouter.HandleFunc("/list", apis.BasketList).Methods("GET")
-	myCustomRouter.HandleFunc("/list/{name}/{color}", apis.BasketAddItem).Methods("POST")
+	myCustomRouter.HandleFunc("/list/save", apis.BasketAddItem).Methods("POST")
+	// myCustomRouter.HandleFunc("/list/{name}/{color}", apis.BasketAddItem).Methods("POST")
 	myCustomRouter.HandleFunc("/list/{name}/{color}", apis.BasketUpdateItem).Methods("PUT")
 	myCustomRouter.HandleFunc("/list/{name}", apis.DeleteUser).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8002", myCustomRouter))
