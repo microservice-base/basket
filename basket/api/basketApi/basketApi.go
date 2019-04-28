@@ -1,17 +1,16 @@
 package custom
 
 import (
+	"basket/basket/basketbusinessservice"
 	"basket/basket/basketbusinessserviceimpl"
 	"basket/basket/dao/basketDao"
+	"fmt"
 
 	"net/http"
 )
 
 //
 func InitialMigration() {
-
-	basketbusinessserviceimpl.Insert("3", "4")
-
 	basketDao.InitialMigration()
 }
 
@@ -22,7 +21,15 @@ func BasketList(w http.ResponseWriter, r *http.Request) {
 
 //
 func BasketAddItem(w http.ResponseWriter, r *http.Request) {
-	basketDao.BasketAddItem(w, r)
+	n := "2"
+	c := "3"
+
+	lel := basketbusinessservice.Addstruct{Name: n, Color: c}
+	result := basketbusinessserviceimpl.AddYap(lel)
+	fmt.Println(result)
+
+	basketbusinessserviceimpl.BasketAddItem(w, r)
+
 }
 
 //

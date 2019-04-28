@@ -1,17 +1,17 @@
 package basketbusinessserviceimpl
 
 import (
-	"basket/basket/basketbusinessservice"
 	bs "basket/basket/basketbusinessservice"
-	"fmt"
+	"basket/basket/dao/basketDao"
+	"net/http"
 )
 
 func AddYap(a bs.Basketinterface) string {
 	return a.Add()
 }
 
-func Insert(n string, c string) {
-	lel := basketbusinessservice.Addstruct{Name: n, Color: c}
-	result := AddYap(lel)
-	fmt.Println(result)
+func BasketAddItem(w http.ResponseWriter, r *http.Request) {
+
+	basketDao.BasketAddItem(w, r)
+
 }
