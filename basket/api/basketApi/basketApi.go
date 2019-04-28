@@ -1,43 +1,62 @@
 package custom
 
 import (
-	"basket/basket/basketbusinessservice"
 	"basket/basket/basketbusinessserviceimpl"
-	"basket/basket/dao/basketDao"
+	"encoding/json"
 	"fmt"
 
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 //
 func InitialMigration() {
-	basketDao.InitialMigration()
+	basketbusinessserviceimpl.InitialMigration()
 }
 
 //
 func BasketList(w http.ResponseWriter, r *http.Request) {
-	basketDao.BasketList(w, r)
+	result := basketbusinessserviceimpl.BasketList()
+	json.NewEncoder(w).Encode(result)
 }
 
 //
 func BasketAddItem(w http.ResponseWriter, r *http.Request) {
-	n := "2"
-	c := "3"
+	// interface kullanımına açılacak
+	// n := "2"
+	// c := "3"
+	// lel := basketbusinessservice.Addstruct{Name: n, Color: c}
+	// result := basketbusinessserviceimpl.AddYap(lel)
+	// fmt.Println(result)
 
-	lel := basketbusinessservice.Addstruct{Name: n, Color: c}
-	result := basketbusinessserviceimpl.AddYap(lel)
-	fmt.Println(result)
+	vars := mux.Vars(r)
+	name := vars["name"]
+	color := vars["color"]
 
-	basketbusinessserviceimpl.BasketAddItem(w, r)
+	basketbusinessserviceimpl.BasketAddItem(&name, &color)
+
+	fmt.Fprintf(w, "New user successfully Created")
 
 }
 
 //
 func BasketDeleteItem(w http.ResponseWriter, r *http.Request) {
-	basketDao.BasketDeleteItem(w, r)
+
+	vars := mux.Vars(r)
+	paramName := vars["name"]
+
+	basketbusinessserviceimpl.BasketDeleteItem(&paramName)
+
+	fmt.Fprintf(w, "New user successfully deleted")
 }
 
 //
 func BasketUpdateItem(w http.ResponseWriter, r *http.Request) {
-	basketDao.BasketUpdateItem(w, r)
+
+	vars := mux.Vars(r)
+	paramName := vars["name"]
+	paramColor := vars["color"]
+
+	basketbusinessserviceimpl.BasketUpdateItem(&paramName, &paramColor)
 }

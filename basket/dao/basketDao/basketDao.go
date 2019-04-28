@@ -2,11 +2,8 @@ package basketDao
 
 import (
 	"basket/basket/domain"
-	"encoding/json"
 	"fmt"
-	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 
 	// _ "github.com/jinzhu/gorm/dialects/postgres"
@@ -30,8 +27,7 @@ func InitialMigration() {
 }
 
 //
-func BasketList(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("List of items")
+func BasketList() []domain.BasketEntity {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
@@ -42,12 +38,12 @@ func BasketList(w http.ResponseWriter, r *http.Request) {
 
 	var users []domain.BasketEntity
 	db.Find(&users)
-	json.NewEncoder(w).Encode(users)
+
+	return users
 }
 
 //
-func BasketAddItem(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Added Item")
+func BasketAddItem(name *string, color *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
@@ -56,18 +52,12 @@ func BasketAddItem(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	vars := mux.Vars(r)
-	name := vars["name"]
-	color := vars["color"]
+	db.Create(&domain.BasketEntity{Name: *name, Color: *color})
 
-	db.Create(&domain.BasketEntity{Name: name, Color: color})
-
-	fmt.Fprintf(w, "New user successfully Created")
 }
 
 //
-func BasketDeleteItem(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Item deleted")
+func BasketDeleteItem(name *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
@@ -75,20 +65,15 @@ func BasketDeleteItem(w http.ResponseWriter, r *http.Request) {
 		panic("failed to connect db")
 	}
 	defer db.Close()
-
-	vars := mux.Vars(r)
-	name := vars["name"]
 
 	var users domain.BasketEntity
-	db.Where("name = ? ", name).Find(&users)
+	db.Where("name = ? ", *name).Find(&users)
 	db.Delete(&users)
 
-	fmt.Fprintf(w, "New user successfully deleted")
 }
 
 //
-func BasketUpdateItem(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Item updated")
+func BasketUpdateItem(name *string, color *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
@@ -97,14 +82,12 @@ func BasketUpdateItem(w http.ResponseWriter, r *http.Request) {
 	}
 	defer db.Close()
 
-	vars := mux.Vars(r)
-	paramName := vars["name"]
-	paramColor := vars["color"]
-
 	var users domain.BasketEntity
-	db.Where("name = ? ", paramName).Find(&users)
 
-	users.Name = paramName
-	users.Color = paramColor
+	db.Where("name = ? ", *name).Find(&users)
+
+	users.Name = *name
+	users.Color = *color
+
 	db.Model(&users).Updates(users)
 }
