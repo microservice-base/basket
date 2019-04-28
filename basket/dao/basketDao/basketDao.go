@@ -1,10 +1,7 @@
-package custom
+package basketDao
 
 import (
-	"basket/basket/basketbusinessservice"
-	"basket/basket/basketbusinessserviceimpl"
-	domain "basket/basket/domain"
-
+	"basket/basket/domain"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -19,11 +16,7 @@ import (
 var db *gorm.DB
 var err error
 
-//
 func InitialMigration() {
-
-	lel := basketbusinessservice.Addstruct{Sayi: 3}
-	basketbusinessserviceimpl.AddYap(lel)
 
 	fmt.Println("initilize db")
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
@@ -73,7 +66,7 @@ func BasketAddItem(w http.ResponseWriter, r *http.Request) {
 }
 
 //
-func DeleteUser(w http.ResponseWriter, r *http.Request) {
+func BasketDeleteItem(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Item deleted")
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")

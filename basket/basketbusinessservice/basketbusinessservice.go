@@ -2,15 +2,19 @@ package basketbusinessservice
 
 type Basketinterface interface {
 	// list(value string) int
-	AddType() int
+	Add() string
+	// AddTypeEntity() domain.BasketEntity
 	// delete(value string) int
 	// update(value string) int
 }
 
+//
 type Addstruct struct {
-	Sayi int
+	Name  string
+	Color string
 }
 
-func (r Addstruct) AddType() int {
-	return r.Sayi
+//
+func (r Addstruct) Add() string {
+	return r.Name + "-" + r.Color
 }

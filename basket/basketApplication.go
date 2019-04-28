@@ -1,7 +1,7 @@
 package main
 
 import (
-	apis "basket/basket/apis"
+	api "basket/basket/api/basketApi"
 
 	"fmt"
 	"log"
@@ -18,18 +18,17 @@ func handleRequests() {
 	myCustomRouter := mux.NewRouter().StrictSlash(true)
 
 	myCustomRouter.HandleFunc("/", applicationInit).Methods("GET")
-	myCustomRouter.HandleFunc("/list", apis.BasketList).Methods("GET")
-	myCustomRouter.HandleFunc("/list/save", apis.BasketAddItem).Methods("POST")
-	// myCustomRouter.HandleFunc("/list/{name}/{color}", apis.BasketAddItem).Methods("POST")
-	myCustomRouter.HandleFunc("/list/{name}/{color}", apis.BasketUpdateItem).Methods("PUT")
-	myCustomRouter.HandleFunc("/list/{name}", apis.DeleteUser).Methods("DELETE")
+	myCustomRouter.HandleFunc("/list", api.BasketList).Methods("GET")
+	myCustomRouter.HandleFunc("/list/save", api.BasketAddItem).Methods("POST")
+	// myCustomRouter.HandleFunc("/list/{name}/{color}", api.BasketAddItem).Methods("POST")
+	myCustomRouter.HandleFunc("/list/{name}/{color}", api.BasketUpdateItem).Methods("PUT")
+	myCustomRouter.HandleFunc("/list/{name}", api.BasketDeleteItem).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8002", myCustomRouter))
 }
 
 func main() {
 
-	apis.InitialMigration()
+	api.InitialMigration()
 
 	handleRequests()
-
 }
