@@ -1,7 +1,10 @@
 package custom
 
 import (
+	"basket/basket/basketbusinessservice"
+	"basket/basket/basketbusinessserviceimpl"
 	domain "basket/basket/domain"
+
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -18,6 +21,10 @@ var err error
 
 //
 func InitialMigration() {
+
+	lel := basketbusinessservice.Addstruct{Sayi: 3}
+	basketbusinessserviceimpl.AddYap(lel)
+
 	fmt.Println("initilize db")
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
