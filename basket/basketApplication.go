@@ -15,8 +15,6 @@ func applicationInit(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	api.InitialMigration()
-
 	myCustomRouter := mux.NewRouter().StrictSlash(true)
 
 	myCustomRouter.HandleFunc("/", applicationInit).Methods("GET")
@@ -29,5 +27,6 @@ func handleRequests() {
 }
 
 func main() {
+	api.InitialMigration()
 	handleRequests()
 }
