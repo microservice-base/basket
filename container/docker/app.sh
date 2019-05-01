@@ -3,6 +3,5 @@ echo "********************************************************"
 echo "Starting Basket Application"
 echo "********************************************************"
 
-cd $GOPATH/src/basket/basket
-go run basketApplication.go
+go run basket/basketApplication.go
 
