@@ -1,7 +1,7 @@
-package basketDao
+package basketdao
 
 import (
-	"basket/basket/domain"
+	"basket/basket/basketentity"
 	"fmt"
 
 	"github.com/jinzhu/gorm"
@@ -22,11 +22,12 @@ func InitialMigration() {
 	}
 	defer db.Close()
 
-	db.AutoMigrate(&domain.BasketEntity{})
+	db.AutoMigrate(&basketentity.BasketEntity{})
+
 }
 
 //
-func BasketList() []domain.BasketEntity {
+func BasketList() []basketentity.BasketEntity {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
 	if err != nil {
@@ -35,7 +36,7 @@ func BasketList() []domain.BasketEntity {
 	}
 	defer db.Close()
 
-	var users []domain.BasketEntity
+	var users []basketentity.BasketEntity
 	db.Find(&users)
 
 	return users
@@ -51,7 +52,7 @@ func BasketAddItem(name *string, color *string) {
 	}
 	defer db.Close()
 
-	db.Create(&domain.BasketEntity{Name: *name, Color: *color})
+	db.Create(&basketentity.BasketEntity{Name: *name, Color: *color})
 
 }
 
@@ -65,7 +66,7 @@ func BasketDeleteItem(name *string) {
 	}
 	defer db.Close()
 
-	var users domain.BasketEntity
+	var users basketentity.BasketEntity
 	db.Where("name = ? ", *name).Find(&users)
 	db.Delete(&users)
 
@@ -81,7 +82,7 @@ func BasketUpdateItem(name *string, color *string) {
 	}
 	defer db.Close()
 
-	var users domain.BasketEntity
+	var users basketentity.BasketEntity
 
 	db.Where("name = ? ", *name).Find(&users)
 

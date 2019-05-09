@@ -1,36 +1,36 @@
 package basketbusinessserviceimpl
 
 import (
-	bs "basket/basket/basketbusinessservice"
-	"basket/basket/dao/basketDao"
-	"basket/basket/domain"
+	"basket/basket/basketbusinessservice"
+	"basket/basket/basketdao"
+	"basket/basket/basketentity"
 )
 
 // sonra yapılacak
-func AddYap(a bs.Basketinterface) string {
+func AddYap(a basketbusinessservice.Basketinterface) string {
 	return a.Add()
 }
 
 func InitialMigration() {
-	basketDao.InitialMigration()
+	basketdao.InitialMigration()
 }
 
 // BasketList return all values
-func BasketList() []domain.BasketEntity {
-	return basketDao.BasketList()
+func BasketList() []basketentity.BasketEntity {
+	return basketdao.BasketList()
 }
 
 // BasketAddItem add new item
 func BasketAddItem(name *string, color *string) {
-	basketDao.BasketAddItem(name, color)
+	basketdao.BasketAddItem(name, color)
 }
 
 // BasketDeleteItem delete item
 func BasketDeleteItem(name *string) {
-	basketDao.BasketDeleteItem(name)
+	basketdao.BasketDeleteItem(name)
 }
 
 // BasketUpdateItem update item
 func BasketUpdateItem(name *string, color *string) {
-	basketDao.BasketUpdateItem(name, color)
+	basketdao.BasketUpdateItem(name, color)
 }

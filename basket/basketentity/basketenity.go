@@ -1,4 +1,4 @@
-package domain
+package basketentity
 
 import "github.com/jinzhu/gorm"
 

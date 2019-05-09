@@ -1,4 +1,4 @@
-package model
+package basketdto
 
 //
 type BasketDTO struct {
