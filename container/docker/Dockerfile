@@ -16,14 +16,17 @@ RUN set -x && \
     dep ensure -v
 
 # RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -a -o app *.go
-RUN go build -o /basket/basket .
+RUN go build -o /basket .
 RUN ls -al 
 RUN pwd
-CMD ["/basket/basket"]
+CMD ["/basket"]
 
-# FROM scratch
-# COPY --from=builder /basket/basket /
-# ENTRYPOINT ["/basket"]
+FROM alpine
+WORKDIR /
+COPY --from=builder . .
+RUN pwd
+RUN ls -al
+ENTRYPOINT ["/basket"]
 
 
 
