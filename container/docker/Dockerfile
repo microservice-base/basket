@@ -1,13 +1,12 @@
-FROM golang:latest as builder
+FROM golang:alpine as builder
 RUN go version
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git build-base
 
 WORKDIR $GOPATH/src/basket
 
 COPY  . .
-
-RUN pwd
-RUN ls -al
-
 
 WORKDIR $GOPATH/src/basket/basket
 
@@ -15,43 +14,26 @@ RUN set -x && \
     go get github.com/golang/dep/cmd/dep && \
     dep ensure -v
 
-# RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -a -o app *.go
-RUN go build -o /basket .
-RUN ls -al 
-RUN pwd
-CMD ["/basket"]
 
-FROM alpine
-WORKDIR /
-COPY --from=builder . .
-RUN pwd
-RUN ls -al
-ENTRYPOINT ["/basket"]
-
+RUN go build -o app 
+FROM alpine:latest
+COPY --from=builder /go/src/basket/basket/app /app
+ENTRYPOINT ["/app"]
 
 
 # FROM golang:1.12.4
 # WORKDIR /root/
 # COPY --from=builder /go/src/basket/basket/ .
 # COPY --from=builder /go/src/basket/container/docker/ .
-
 # RUN pwd
 # RUN ls -al 
-
 # ENTRYPOINT ["sh","/root/app.sh"]
 
-
-
 # FROM golang:1.12.4 as builder
-
 # LABEL maintainer="Kerami Ozsoy <mail>"
-
 # WORKDIR $GOPATH/src/basket/
-
 # COPY . $GOPATH/src/basket
-
 # RUN go install -v ./...
-
 # FROM golang:1.12.4-alpine
 # COPY --from=builder /go/bin/basket /basket
 # CMD ["/basket"]
