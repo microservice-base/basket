@@ -2,7 +2,6 @@
 
 https://microservice-base.github.io/
 
-docker pull keramiozsoy/image-basket
 
 
 ```
@@ -24,11 +23,14 @@ $ ./basketApplication
 ```
 ## Docker
 ```
+$  docker pull keramiozsoy/image-basket
+$  docker run -it --rm --name basket-app -p 8002:8002 image-basket // just run
+
+or
+
 $  git clone https://github.com/microservice-base/basket.git
 $  cd basket
 $  docker build -t image-basket  -f container/docker/Dockerfile . 
-
-$  docker run -it --rm --name basket-app -p 8002:8002 image-basket // just run
 $  docker run -d --name basket-app -p 8002:8002 image-basket
 
 $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
