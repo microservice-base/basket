@@ -2,6 +2,8 @@
 
 https://microservice-base.github.io/
 
+docker pull keramiozsoy/image-basket
+
 
 ```
 $ git clone https://github.com/microservice-base/basket.git
