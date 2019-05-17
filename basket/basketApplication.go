@@ -10,7 +10,7 @@ import (
 )
 
 func applicationInit(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Basket Application Running ....")
+	fmt.Fprintln(w, "Basket Application Running ...")
 }
 
 func handleRequests() {
