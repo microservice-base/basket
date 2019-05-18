@@ -21,7 +21,7 @@ $ go build basketApplication.go
 
 $ ./basketApplication
 ```
-## Docker
+## docker
 ```
 $  docker pull keramiozsoy/image-basket
 $  docker run -it --rm --name basket-app -p 8002:8002 image-basket // just run
@@ -36,12 +36,21 @@ $  docker run -d --name basket-app -p 8002:8002 image-basket
 $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 ```
 
-## Dependency Management
+## kubernetes ( minikube )
+```
+$  kubectl create deployment image-basket-deployment --image=keramiozsoy/image-basket
+$  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=8002
+
+$  kubectl delete service image-basket-deployment
+$  kubectl delete deployment image-basket-deployment
+
+```
+## dependency management
 ```
 https://github.com/golang/dep
 ```
 
-## API call on terminal
+## api call on terminal
 ```
 $ curl -X GET "http://localhost:8002/basket/list"
 
