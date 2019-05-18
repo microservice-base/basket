@@ -21,6 +21,11 @@ $ go build basketApplication.go
 
 $ ./basketApplication
 ```
+## dependency management
+```
+https://github.com/golang/dep
+```
+
 ## docker
 ```
 $  docker pull keramiozsoy/image-basket
@@ -44,10 +49,6 @@ $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=
 $  kubectl delete service image-basket-deployment
 $  kubectl delete deployment image-basket-deployment
 
-```
-## dependency management
-```
-https://github.com/golang/dep
 ```
 
 ## api call on terminal
