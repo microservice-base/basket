@@ -12,7 +12,6 @@ $ dep ensure
 $ cd basket/basket
 
 $ go test
-
 $ go run basketApplication.go
 
 or
