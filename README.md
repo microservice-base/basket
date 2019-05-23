@@ -1,4 +1,4 @@
-# basket
+# basket app
 
 https://microservice-base.github.io
 
