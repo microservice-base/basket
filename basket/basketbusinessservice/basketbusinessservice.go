@@ -2,7 +2,7 @@ package basketbusinessservice
 
 type Basketinterface interface {
 	// list(value string) int
-	Add() string
+	 Add() string
 	// AddTypeEntity() domain.BasketEntity
 	// delete(value string) int
 	// update(value string) int
