@@ -40,7 +40,7 @@ $  docker run -d --name basket-app -p 8002:8002 image-basket
 $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 ```
 
-## kubernetes ( minikube )
+## kubernetes ( on minikube )
 ```
 $  kubectl create deployment image-basket-deployment --image=keramiozsoy/image-basket
 $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=8002
