@@ -17,6 +17,8 @@ RUN set -x && \
 
 RUN go build -o app 
 FROM alpine:latest
+RUN apk add -U tzdata
+RUN cp /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
 COPY --from=builder /go/src/basket/basket/app /app
 ENTRYPOINT ["/app"]
 
