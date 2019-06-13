@@ -14,8 +14,8 @@ RUN set -x && \
     go get github.com/golang/dep/cmd/dep && \
     dep ensure -v
 
-
 RUN go build -o app 
+
 FROM alpine:latest
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
