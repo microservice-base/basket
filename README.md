@@ -45,6 +45,10 @@ $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 $  kubectl create deployment image-basket-deployment --image=keramiozsoy/image-basket
 $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=8002
 
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment
+$  kubectl scale deployment image-basket-deployment --replicas=3
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment
+
 $  minikube service image-basket-deployment
 
 $  kubectl delete service image-basket-deployment
