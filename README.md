@@ -59,6 +59,7 @@ $  kubectl rollout history deployment image-basket-deployment --revision=2 ( Doe
 $  kubectl set image deployment image-basket-deployment --image=keramiozsoy/image-basket:v1
 $  kubectl rollout history deployment image-basket-deployment --revision=1 
 $  kubectl rollout history deployment image-basket-deployment --revision=2 (revisions have differend dockerized version)
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment (old revision replicaset now scaled down to zero :) )
 
 
 $  minikube service image-basket-deployment
