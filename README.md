@@ -47,7 +47,7 @@ $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=
 
 $  kubectl get deployment,rs,po  -l app=image-basket-deployment
 $  kubectl scale deployment image-basket-deployment --replicas=3
-$  kubectl get deployment,rs,po  -l app=image-basket-deployment
+$  kubectl describe deployment image-basket-deployment
 
 $  minikube service image-basket-deployment
 
