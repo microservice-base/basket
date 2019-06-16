@@ -43,7 +43,7 @@ $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 ## kubernetes ( on minikube )
 ```
 $  kubectl create deployment image-basket-deployment --image=keramiozsoy/image-basket
-$  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=8002
+$  kubectl expose deployment image-basket-deployment --type=NodePort --port=8002
 
 $  minikube service image-basket-deployment
 
