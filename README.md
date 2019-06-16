@@ -47,7 +47,19 @@ $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=
 
 $  kubectl get deployment,rs,po  -l app=image-basket-deployment
 $  kubectl scale deployment image-basket-deployment --replicas=3
+
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment
 $  kubectl describe deployment image-basket-deployment
+
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment
+$  kubectl rollout history deployment image-basket-deployment
+$  kubectl rollout history deployment image-basket-deployment --revision=1
+$  kubectl rollout history deployment image-basket-deployment --revision=2 ( Doesnt have different replicaset , different image version)
+
+$  kubectl set image deployment image-basket-deployment --image=keramiozsoy/image-basket:v1
+$  kubectl rollout history deployment image-basket-deployment --revision=1 
+$  kubectl rollout history deployment image-basket-deployment --revision=2 (revisions have differend dockerized version)
+
 
 $  minikube service image-basket-deployment
 
