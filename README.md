@@ -66,7 +66,7 @@ $  kubectl get deployment,rs,po  -l app=image-basket-deployment (old revision r
 $  kubectl rollout undo deploymnet image-basket-deployment --to-revision=1 ( undo deployment)
 $  kubectl get deployment,rs,po  -l app=image-basket-deployment
 $  kubectl rollout history deployment image-basket-deployment --revision=2
-$  kubectl rollout history deployment image-basket-deployment --revision=3 (current state but same revision 1)
+$  kubectl rollout history deployment image-basket-deployment --revision=3 (current state but check same replicaset name  same revision 1 )
 
 
 $  kubectl delete service image-basket-deployment
