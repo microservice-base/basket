@@ -45,6 +45,8 @@ $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 $  kubectl create deployment image-basket-deployment --image=keramiozsoy/image-basket
 $  kubectl expose deployment image-basket-deployment --type=LoadBalancer --port=8002
 
+$  minikube service image-basket-deployment
+
 $  kubectl get deployment,rs,po  -l app=image-basket-deployment
 $  kubectl scale deployment image-basket-deployment --replicas=3
 
@@ -61,8 +63,11 @@ $  kubectl rollout history deployment image-basket-deployment --revision=1
 $  kubectl rollout history deployment image-basket-deployment --revision=2 (revisions have differend dockerized version)
 $  kubectl get deployment,rs,po  -l app=image-basket-deployment (old revision replicaset now scaled down to zero :) )
 
+$  kubectl rollout undo deploymnet image-basket-deployment --to-revision=1 ( undo deployment)
+$  kubectl get deployment,rs,po  -l app=image-basket-deployment
+$  kubectl rollout history deployment image-basket-deployment --revision=2
+$  kubectl rollout history deployment image-basket-deployment --revision=3 (current state but same revision 1)
 
-$  minikube service image-basket-deployment
 
 $  kubectl delete service image-basket-deployment
 $  kubectl delete deployment image-basket-deployment
