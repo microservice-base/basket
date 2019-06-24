@@ -38,6 +38,7 @@ $  docker build -t image-basket  -f container/docker/Dockerfile .
 $  docker run -d --name basket-app -p 8002:8002 image-basket
 
 $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
+$  docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
 ```
 
 ## kubernetes ( on minikube )
