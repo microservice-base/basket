@@ -28,7 +28,7 @@ https://github.com/golang/dep
 ## docker
 ```
 $  docker pull keramiozsoy/image-basket
-$  docker run -it --rm --name basket-app -p 8002:8002 image-basket // just run
+$  docker run -it --rm --name basket-project -p 8002:8002 image-basket // just run
 
 or
 
