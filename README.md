@@ -28,14 +28,14 @@ https://github.com/golang/dep
 ## docker
 ```
 $  docker pull keramiozsoy/image-basket
-$  docker run -it --rm --name basket-project -p 8002:8002 image-basket // just run
+$  docker run -it --rm --name app-basket -p 8002:8002 image-basket // just run
 
 or
 
 $  git clone https://github.com/microservice-base/basket.git
 $  cd basket
 $  docker build -t image-basket  -f container/docker/Dockerfile . 
-$  docker run -d --name basket-app -p 8002:8002 image-basket
+$  docker run -d --name app-basket -p 8002:8002 image-basket
 
 $  docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 $  docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
