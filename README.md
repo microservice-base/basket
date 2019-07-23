@@ -19,11 +19,7 @@ or
 $ go build basketApplication.go 
 
 $ ./basketApplication
-```
-## dependency management
-```
-https://github.com/golang/dep
-```
+``
 
 ## docker
 ```
