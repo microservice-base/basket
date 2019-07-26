@@ -19,7 +19,7 @@ or
 $ go build basketApplication.go 
 
 $ ./basketApplication
-``
+```
 
 ## docker
 ```
