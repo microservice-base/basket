@@ -11,11 +11,12 @@ func AddYap(a basketbusinessservice.Basketinterface) string {
 	return a.Add()
 }
 
+//
 func InitialMigration() {
 	basketdao.InitialMigration()
 }
 
-// BasketList return all values
+// BasketList return all basket items
 func BasketList() []basketentity.BasketEntity {
 	return basketdao.BasketList()
 }
