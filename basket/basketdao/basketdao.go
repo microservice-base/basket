@@ -12,6 +12,7 @@ import (
 var db *gorm.DB
 var err error
 
+// InitialMigration is initilaze db method
 func InitialMigration() {
 
 	fmt.Println("initilize db")
@@ -26,7 +27,7 @@ func InitialMigration() {
 
 }
 
-//
+// BasketList is items of basket
 func BasketList() []basketentity.BasketEntity {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
@@ -42,7 +43,7 @@ func BasketList() []basketentity.BasketEntity {
 	return users
 }
 
-//
+// BasketAddItem is add item to basket
 func BasketAddItem(name *string, color *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
@@ -56,7 +57,7 @@ func BasketAddItem(name *string, color *string) {
 
 }
 
-//
+// BasketDeleteItem is delete item to basket
 func BasketDeleteItem(name *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
@@ -72,7 +73,7 @@ func BasketDeleteItem(name *string) {
 
 }
 
-//
+// BasketUpdateItem is update item to basket
 func BasketUpdateItem(name *string, color *string) {
 
 	db, err := gorm.Open("sqlite3", "./sqlitetest.db")
