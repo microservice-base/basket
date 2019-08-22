@@ -11,7 +11,7 @@ func AddYap(a basketbusinessservice.Basketinterface) string {
 	return a.Add()
 }
 
-//
+// initialize db 
 func InitialMigration() {
 	basketdao.InitialMigration()
 }
