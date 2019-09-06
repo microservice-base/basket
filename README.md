@@ -3,6 +3,9 @@
  https://microservice-base.github.io
 
 
+## Contributing
+
+[Contributing guide](CONTRIBUTING.md).
 
 ```
 $ git clone https://github.com/microservice-base/basket.git
