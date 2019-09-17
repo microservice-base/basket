@@ -10,9 +10,9 @@
 ```
 $ git clone https://github.com/microservice-base/basket.git
 
-$ dep ensure
-
 $ cd basket/basket
+
+$ dep ensure
 
 $ go test
 $ go run basketApplication.go
