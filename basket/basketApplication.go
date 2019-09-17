@@ -16,12 +16,13 @@ func applicationInit(w http.ResponseWriter, r *http.Request) {
 func handleRequests() {
 	myCustomRouter := mux.NewRouter().StrictSlash(true)
 
-	myCustomRouter.HandleFunc("/basket", applicationInit).Methods("GET")
-	myCustomRouter.HandleFunc("/basket/list", basketapi.BasketList).Methods("GET")
+	myCustomRouter.HandleFunc("/", applicationInit).Methods("GET")
+
+	myCustomRouter.HandleFunc("/list", basketapi.BasketList).Methods("GET")
 	// myCustomRouter.HandleFunc("/basket/list/save", api.BasketAddItem).Methods("POST")
-	myCustomRouter.HandleFunc("/basket/list/{name}/{color}", basketapi.BasketAddItem).Methods("POST")
-	myCustomRouter.HandleFunc("/basket/list/{name}/{color}", basketapi.BasketUpdateItem).Methods("PUT")
-	myCustomRouter.HandleFunc("/basket/list/{name}", basketapi.BasketDeleteItem).Methods("DELETE")
+	myCustomRouter.HandleFunc("/list/{name}/{color}", basketapi.BasketAddItem).Methods("POST")
+	myCustomRouter.HandleFunc("/list/{name}/{color}", basketapi.BasketUpdateItem).Methods("PUT")
+	myCustomRouter.HandleFunc("/list/{name}", basketapi.BasketDeleteItem).Methods("DELETE")
 	log.Fatal(http.ListenAndServe(":8002", myCustomRouter))
 }
 
