@@ -2,6 +2,7 @@
 
  https://microservice-base.github.io
 
+Ana projenin sepet modulü projesidir.
 
 ## Contributing
 
